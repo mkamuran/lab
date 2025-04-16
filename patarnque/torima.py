@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from collections import deque  # ← スペルミス修正
+from collections import deque
 import copy
 from itertools import product
 from collections import defaultdict
@@ -116,10 +116,10 @@ if __name__ == "__main__":
 			static2[(black_count,"X")] += 1
 
 print(f"{n}*{n} result")
-# for key in sorted(static.keys()):
-# 	print(f"黒:{key[0]} 手数:{key[1]} → 件数:{static[key]}")
-# for key in sorted(static2.keys()):
-# 	print(f"黒:{key[0]} → {key[1]}件数:{static2[key]}")
+for key in sorted(static.keys()):
+	print(f"黒:{key[0]} 手数:{key[1]} → 件数:{static[key]}")
+for key in sorted(static2.keys()):
+	print(f"黒:{key[0]} → {key[1]}件数:{static2[key]}")
 
 df = pd.DataFrame([(k[0], k[1], v) for k, v in static.items()],columns=["black","steps","value"])
 miss=df[df["steps"]==-1]["value"].sum()

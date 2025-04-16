@@ -1,23 +1,24 @@
 import numpy as np
 import random
 import copy
+import util
 class GameMap:
-	def __init__(self, n=5, black_count=3):
+	def __init__(self, n=3, black_count=3):
 		self.n = n
 		self.size = n * n
 		self.map_data = np.zeros(self.size, dtype=int)
-		black = random.sample(range(0, self.size), black_count)
-		for i in black:
-			self.map_data[i] = 1
+		self.reset(black_count)
 
 	def set_map(self, map_data):
 		self.map_data = np.array(map_data, dtype=int)
 
-	def reset(self):
+	def reset(self,black_count):
 		self.map_data = np.zeros(self.size, dtype=int)
-		black = random.sample(range(0, self.size), 3)
+		black = random.sample(range(0, self.size), black_count)
 		for i in black:
 			self.map_data[i] = 1
+		if(util.solve(self.map_data) == None):
+			self.reset(black_count)
 		return self.map_data
 	
 	def apply_action(self, command):
