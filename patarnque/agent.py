@@ -1,7 +1,6 @@
 import settings
 import NN
 import torch
-
 import numpy as np
 
 class Agent:
@@ -28,5 +27,5 @@ class Agent:
 	def update_target_network(self):
 		self.qnet_target.load_state_dict(self.qnet.state_dict())
 
-	def save_model(self,place):
-		torch.save(self.qnet.state_dict(),place + 'model')
+	def save_model(self,place,n):
+		torch.save(self.qnet.state_dict(),place + 'model'+str(n))

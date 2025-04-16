@@ -1,2 +1,2 @@
-device = 'cuda:0'
-# device = 'cpu'
+# device = 'cuda:0'
+device = 'cpu'
